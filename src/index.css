@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Base premium */
+:root { color-scheme: dark; }
+
+html, body, #root { height: 100%; }
+* { -webkit-tap-highlight-color: transparent; }
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+      "Apple Color Emoji","Segoe UI Emoji";
+  }
+
+  a { @apply text-inherit no-underline; }
+  h1,h2,h3,h4 { @apply tracking-tight; }
+  p { @apply leading-relaxed; }
+}
+
+/* Background premium */
+.bg-noise {
+  background-image:
+    radial-gradient(1200px 800px at 20% 10%, rgba(212,175,55,.10), transparent 60%),
+    radial-gradient(1000px 700px at 80% 0%, rgba(212,175,55,.08), transparent 60%),
+    radial-gradient(900px 700px at 70% 90%, rgba(255,255,255,.04), transparent 55%);
+}
+
+.gold-text {
+  background: linear-gradient(90deg, #ffe380, #d4af37, #b8922b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(10, 10, 14, 0.55);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(12px);
+}
+
+/* Glow */
+.shadow-glow {
+  box-shadow: 0 0 0 1px rgba(212,175,55,.20), 0 12px 40px rgba(0,0,0,.55);
+}
