@@ -156,7 +156,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-4 max-w-xl text-base text-white/70 sm:text-lg">
-                A <b className="text-white">{BRAND.name}</b> é a academia pra quem
+                A RS GYM é a academia pra quem
                 quer evoluir de verdade: ambiente premium, treino inteligente e
                 uma experiência que dá vontade de voltar.
               </p>
@@ -188,7 +188,7 @@ export default function Home() {
           >
             <div>
               <h2 className="text-3xl font-semibold">
-                Planos <span className="gold-text">reais</span>
+              <span className="gold-text">Planos</span>
               </h2>
               <p className="mt-3 max-w-2xl text-white/70">
                 Valores e durações conforme a academia. Para matrícula e
