@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Snowflake, Shield, Sparkles, SprayCan, Users, Dumbbell } from "lucide-react";
 

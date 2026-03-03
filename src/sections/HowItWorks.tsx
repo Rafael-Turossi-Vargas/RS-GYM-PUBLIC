@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { CalendarCheck, ClipboardList, Dumbbell } from "lucide-react";
 import { buildWhatsAppLink } from "../lib/brand";

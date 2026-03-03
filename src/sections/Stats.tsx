@@ -1,4 +1,3 @@
-import React from "react";
 import { Star, Users, Trophy } from "lucide-react";
 import CountUp from "../components/CountUp";
 import { BRAND } from "../lib/brand";
