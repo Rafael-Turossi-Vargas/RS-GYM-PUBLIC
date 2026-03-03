@@ -1,11 +1,9 @@
 export type DayKey = "monFri" | "saturday" | "sunday";
-
 export type DayHours = { open: string; close: string };
-
 export type OpeningHours = Record<DayKey, DayHours | null>;
 
 export const BRAND = {
-  name: "",
+  name: "RS GYM",
   city: "Esteio - RS",
   phone: "5551991887719",
   whatsappDisplay: "(51) 99188-7719",
@@ -13,7 +11,8 @@ export const BRAND = {
   addressShort: "Av. Pres. Vargas, 760 — Centro, Esteio/RS",
 
   googleRating: 4.8,
-  googleReviewCount: 37,
+  // ✅ padronizado com o Home.tsx
+  googleReviewsCount: 37,
 
   googleReviewsUrl: "https://www.google.com/search?q=RS+GYM+Esteio+reviews",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=RS%20GYM%20Esteio%20RS",
@@ -25,9 +24,9 @@ export const BRAND = {
   hours: {
     monFri: { open: "06:00", close: "22:00" },
     saturday: { open: "09:00", close: "13:00" },
-    sunday: null, // fechado
+    sunday: null,
   } satisfies OpeningHours,
-};
+} as const;
 
 export function buildWhatsAppLink() {
   const msg =

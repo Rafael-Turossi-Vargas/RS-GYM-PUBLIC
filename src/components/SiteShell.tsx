@@ -1,8 +1,10 @@
 import React from "react";
+import StickyTrialBar from "./StickyTrialBar";
 import { NavLink } from "react-router-dom";
 import { Instagram, ArrowRight } from "lucide-react";
 import { BRAND, buildWhatsAppLink } from "../lib/brand";
 import Footer from "./Footer";
+
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const wa = buildWhatsAppLink();
 
@@ -68,13 +70,13 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Backgrounds globais */}
       <div className="pointer-events-none fixed inset-0 bg-noise" />
       <div className="pointer-events-none fixed inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,rgba(255,255,255,.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.18)_1px,transparent_1px)] [background-size:72px_72px]" />
 
-      {/* ✅ Header mais “SaaS” (leve no topo, mais sólido quando rola) */}
+      {/* Header */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-black/60 backdrop-blur supports-[backdrop-filter]:bg-black/50">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* ✅ LOGO: sem borda, maior, mais visível + hover premium */}
           <a href="/#inicio" className="flex items-center gap-4 group">
             <img
               src="/logo.png"
@@ -125,7 +127,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
               Instagram
             </a>
 
-            {/* ✅ WhatsApp HEADER */}
             <a
               href={wa}
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gold-500/30 bg-white/5 px-4 py-2 text-sm font-semibold text-white shadow-glow hover:bg-white/10 transition"
@@ -138,11 +139,14 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      {children}
+      {/* ✅ Conteúdo da página (apenas 1x!) */}
+      <main>{children}</main>
 
-<Footer />
+      {/* Footer + CTA fixo (1x!) */}
+      <Footer />
+      <StickyTrialBar />
 
-      {/* ✅ WhatsApp flutuante PREMIUM (somente imagem + efeitos) */}
+      {/* WhatsApp flutuante */}
       <a
         ref={btnRef}
         href={wa}
@@ -168,11 +172,9 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
           ].join(" ")}
           style={{ transform: `translate3d(${magnet.x}px, ${magnet.y}px, 0)` }}
         >
-          {/* glow premium (camadas) */}
           <div className="pointer-events-none absolute -inset-3 rounded-full opacity-70 blur-2xl bg-[radial-gradient(circle,rgba(37,211,102,0.35),transparent_60%)]" />
           <div className="pointer-events-none absolute -inset-2 rounded-full opacity-40 blur-xl bg-[radial-gradient(circle,rgba(212,175,55,0.25),transparent_60%)]" />
 
-          {/* ✅ ÍCONE IMAGEM (você vai fornecer) */}
           <img
             src="/whatsapp.png"
             alt="WhatsApp"
@@ -188,7 +190,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
       </a>
 
-      {/* Keyframes (sem mexer no tailwind.config) */}
       <style>{`
         @keyframes rsgymPulse {
           0%, 100% { filter: brightness(1); transform: translate3d(0,0,0) scale(1); }

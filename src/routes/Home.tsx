@@ -1,21 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  MapPin,
-  Star,
-  Clock,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowRight, MapPin, Star, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 import SiteShell from "../components/SiteShell";
 import { BRAND, buildWhatsAppLink } from "../lib/brand";
+
 import Gallery from "../sections/Gallery";
 import FAQ from "../sections/FAQ";
 import Reviews from "../sections/Reviews";
 import Schedule from "../sections/Schedule";
 import Contact from "../sections/Contact";
+
 import { PLANS } from "../lib/plans";
+import Stats from "../sections/Stats";
+import Coaches from "../sections/Coaches";
+import PlanQuiz from "../sections/PlanQuiz";
 
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
@@ -25,18 +25,10 @@ const fadeUp = {
 };
 
 const Container = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-    {children}
-  </div>
+  <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">{children}</div>
 );
 
-function PrimaryButton({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+function PrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
       href={href}
@@ -49,13 +41,7 @@ function PrimaryButton({
   );
 }
 
-function GhostButton({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+function GhostButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
       href={href}
@@ -83,11 +69,7 @@ function CarouselArrows({
 
   return (
     <div
-      className={[
-        "absolute inset-y-0 left-0 right-0 z-30",
-        "pointer-events-none",
-        className,
-      ].join(" ")}
+      className={["absolute inset-y-0 left-0 right-0 z-30", "pointer-events-none", className].join(" ")}
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 bg-[linear-gradient(to_right,rgba(0,0,0,.70),transparent)]" />
       <div className="pointer-events-none absolute inset-y-0 right-0 bg-[linear-gradient(to_left,rgba(0,0,0,.70),transparent)]" />
@@ -131,6 +113,10 @@ export default function Home() {
   const wa = buildWhatsAppLink();
   const plansScrollerRef = React.useRef<HTMLDivElement | null>(null);
 
+  // ✅ totalmente tipado, sem "brandAny"
+  const googleRating = typeof BRAND.googleRating === "number" ? BRAND.googleRating : 4.8;
+  const googleReviews = typeof BRAND.googleReviewsCount === "number" ? BRAND.googleReviewsCount : 37;
+
   return (
     <SiteShell>
       {/* HERO */}
@@ -141,8 +127,9 @@ export default function Home() {
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
                   <Star className="h-3.5 w-3.5 text-gold-500" />
-                  4,8 no Google (37 avaliações)
+                  {googleRating.toFixed(1).replace(".", ",")} no Google ({googleReviews} avaliações)
                 </span>
+
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
                   <MapPin className="h-3.5 w-3.5 text-gold-500" />
                   {BRAND.addressShort}
@@ -156,16 +143,15 @@ export default function Home() {
               </h1>
 
               <p className="mt-4 max-w-xl text-base text-white/70 sm:text-lg">
-                A RS GYM é a academia pra quem
-                quer evoluir de verdade: ambiente premium, treino inteligente e
-                uma experiência que dá vontade de voltar.
+                A RS GYM é a academia pra quem quer evoluir de verdade: ambiente premium, treino inteligente e uma
+                experiência que dá vontade de voltar.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <PrimaryButton href={wa}>
-                  Agendar aula experimental{" "}
-                  <ArrowRight className="h-4 w-4 text-white" />
+                  Agendar aula experimental <ArrowRight className="h-4 w-4 text-white" />
                 </PrimaryButton>
+
                 <GhostButton href="#planos-preview">
                   Ver planos <Clock className="h-4 w-4 text-white" />
                 </GhostButton>
@@ -175,9 +161,19 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Prova social (contadores) */}
+      <Stats />
+
+      {/* Conteúdo */}
       <Gallery />
       <Reviews />
       <Schedule />
+
+      {/* Professores (confiança) */}
+      <Coaches />
+
+      {/* Quiz (conversão) */}
+      <PlanQuiz />
 
       {/* Preview Planos */}
       <section id="planos-preview" className="py-14 sm:py-20">
@@ -188,20 +184,20 @@ export default function Home() {
           >
             <div>
               <h2 className="text-3xl font-semibold">
-              <span className="gold-text">Planos</span>
+                <span className="gold-text">Planos</span>
               </h2>
               <p className="mt-3 max-w-2xl text-white/70">
-                Valores e durações conforme a academia. Para matrícula e
-                condições, chame no WhatsApp.
+                Valores e durações conforme a academia. Para matrícula e condições, chame no WhatsApp.
               </p>
             </div>
 
-            <a
-              href="/planos"
+            {/* ✅ SPA: sem reload */}
+            <Link
+              to="/planos"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
             >
               Ver página de Planos <ArrowRight className="h-4 w-4 text-white" />
-            </a>
+            </Link>
           </motion.div>
 
           {/* ✅ MOBILE: carrossel com setas */}
@@ -230,7 +226,6 @@ export default function Home() {
                   key={p.name}
                   className={[
                     "snap-start",
-                    // ✅ menor no mobile (mais “SaaS”)
                     "min-w-[80%] max-w-[80%]",
                     "relative overflow-hidden rounded-3xl border",
                     p.highlight
@@ -239,7 +234,6 @@ export default function Home() {
                   ].join(" ")}
                 >
                   <div className="p-5">
-                    {/* reserva pro ribbon */}
                     <div className="h-9">
                       {p.ribbon ? (
                         <div className="absolute left-0 right-0 top-0 bg-[rgba(212,175,55,.20)] px-4 py-2 text-center text-xs font-semibold tracking-wider text-white/90">
@@ -251,27 +245,17 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col">
-                      <div className="text-base font-semibold text-white">
-                        {p.name}
-                      </div>
+                      <div className="text-base font-semibold text-white">{p.name}</div>
 
                       <div className="mt-4">
-                        <div className="text-3xl font-bold text-white">
-                          {p.price}
-                        </div>
-                        <div className="mt-1 text-sm text-white/60">
-                          {p.cadence}
-                        </div>
+                        <div className="text-3xl font-bold text-white">{p.price}</div>
+                        <div className="mt-1 text-sm text-white/60">{p.cadence}</div>
                       </div>
 
-                      <div className="mt-3 min-h-[18px] text-sm text-white/70">
-                        {p.extra ?? ""}
-                      </div>
+                      <div className="mt-3 min-h-[18px] text-sm text-white/70">{p.extra ?? ""}</div>
 
                       <div className="mt-4 border-t border-white/10 pt-3">
-                        <div className="text-sm font-semibold text-white/90">
-                          {p.detail}
-                        </div>
+                        <div className="text-sm font-semibold text-white/90">{p.detail}</div>
                       </div>
 
                       <a
@@ -326,14 +310,10 @@ export default function Home() {
                       <div className="mt-1 text-sm text-white/60">{p.cadence}</div>
                     </div>
 
-                    <div className="mt-3 min-h-[20px] text-sm text-white/70">
-                      {p.extra ?? ""}
-                    </div>
+                    <div className="mt-3 min-h-[20px] text-sm text-white/70">{p.extra ?? ""}</div>
 
                     <div className="mt-5 border-t border-white/10 pt-4">
-                      <div className="text-sm font-semibold text-white/90">
-                        {p.detail}
-                      </div>
+                      <div className="text-sm font-semibold text-white/90">{p.detail}</div>
                     </div>
 
                     <a

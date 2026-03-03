@@ -23,8 +23,10 @@ export default function Footer() {
   }, []);
 
   const rating = typeof BRAND.googleRating === "number" ? BRAND.googleRating : 4.8;
+
+  // ✅ CORRIGIDO: mesmo nome do brand.ts
   const reviewCount =
-    typeof BRAND.googleReviewCount === "number" ? BRAND.googleReviewCount : 37;
+    typeof BRAND.googleReviewsCount === "number" ? BRAND.googleReviewsCount : 37;
 
   return (
     <footer className="relative mt-16 border-t border-white/10 bg-black/55 backdrop-blur supports-[backdrop-filter]:bg-black/45">
@@ -37,10 +39,26 @@ export default function Footer() {
         {/* Trust row / “SaaS vibe” */}
         <div className="grid gap-3 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { icon: <Dumbbell className="h-4 w-4 text-gold-500" />, title: "Estrutura premium", desc: "Equipamentos e ambiente acima da média." },
-            { icon: <ShieldCheck className="h-4 w-4 text-gold-500" />, title: "Treino seguro", desc: "Orientação e rotina consistente." },
-            { icon: <Sparkles className="h-4 w-4 text-gold-500" />, title: "Experiência", desc: "Lugar que dá vontade de voltar." },
-            { icon: <MessageCircle className="h-4 w-4 text-gold-500" />, title: "Suporte rápido", desc: "WhatsApp direto com a equipe." },
+            {
+              icon: <Dumbbell className="h-4 w-4 text-gold-500" />,
+              title: "Estrutura premium",
+              desc: "Equipamentos e ambiente acima da média.",
+            },
+            {
+              icon: <ShieldCheck className="h-4 w-4 text-gold-500" />,
+              title: "Treino seguro",
+              desc: "Orientação e rotina consistente.",
+            },
+            {
+              icon: <Sparkles className="h-4 w-4 text-gold-500" />,
+              title: "Experiência",
+              desc: "Lugar que dá vontade de voltar.",
+            },
+            {
+              icon: <MessageCircle className="h-4 w-4 text-gold-500" />,
+              title: "Suporte rápido",
+              desc: "WhatsApp direto com a equipe.",
+            },
           ].map((b) => (
             <div
               key={b.title}
