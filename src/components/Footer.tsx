@@ -7,9 +7,6 @@ import {
   Instagram,
   MessageCircle,
   ArrowRight,
-  Sparkles,
-  Dumbbell,
-  ShieldCheck,
 } from "lucide-react";
 
 export default function Footer() {
@@ -37,44 +34,6 @@ export default function Footer() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Trust row / “SaaS vibe” */}
-        <div className="grid gap-3 pt-10 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              icon: <Dumbbell className="h-4 w-4 text-gold-500" />,
-              title: "Estrutura premium",
-              desc: "Equipamentos e ambiente acima da média.",
-            },
-            {
-              icon: <ShieldCheck className="h-4 w-4 text-gold-500" />,
-              title: "Treino seguro",
-              desc: "Orientação e rotina consistente.",
-            },
-            {
-              icon: <Sparkles className="h-4 w-4 text-gold-500" />,
-              title: "Experiência",
-              desc: "Lugar que dá vontade de voltar.",
-            },
-            {
-              icon: <MessageCircle className="h-4 w-4 text-gold-500" />,
-              title: "Suporte rápido",
-              desc: "WhatsApp direto com a equipe.",
-            },
-          ].map((b) => (
-            <div
-              key={b.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_10px_28px_rgba(0,0,0,0.35)]"
-            >
-              <div className="flex items-center gap-2">
-                <div className="grid h-8 w-8 place-items-center rounded-xl border border-white/10 bg-black/30">
-                  {b.icon}
-                </div>
-                <div className="text-sm font-semibold text-white">{b.title}</div>
-              </div>
-              <div className="mt-2 text-sm text-white/60">{b.desc}</div>
-            </div>
-          ))}
-        </div>
-
         {/* Conteúdo principal */}
         <div className="grid gap-10 py-12 md:grid-cols-4">
           {/* Brand */}

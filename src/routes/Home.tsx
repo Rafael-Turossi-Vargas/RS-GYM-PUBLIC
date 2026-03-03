@@ -14,12 +14,11 @@ import Contact from "../sections/Contact";
 
 import { PLANS } from "../lib/plans";
 import Stats from "../sections/Stats";
-import Coaches from "../sections/Coaches";
+
 import PlanQuiz from "../sections/PlanQuiz";
 
 // ✅ NOVAS SECTIONS (SaaS premium)
 import Premium from "../sections/Premium";
-import HowItWorks from "../sections/HowItWorks";
 import Comparison from "../sections/Comparison";
 import PeakHours from "../sections/PeakHours";
 
@@ -170,7 +169,6 @@ export default function Home() {
 
       {/* ✅ Diferenciais premium (SaaS) */}
       <Premium />
-      <HowItWorks />
       <Comparison />
 
       {/* Conteúdo */}
@@ -183,7 +181,6 @@ export default function Home() {
       <Schedule />
 
       {/* Professores (confiança) */}
-      <Coaches />
 
       {/* Quiz (conversão) */}
       <PlanQuiz />

@@ -3,7 +3,7 @@ export type DayHours = { open: string; close: string };
 export type OpeningHours = Record<DayKey, DayHours | null>;
 
 export const BRAND = {
-  name: "RS GYM",
+  name: "",
   city: "Esteio - RS",
   phone: "5551991887719",
   whatsappDisplay: "(51) 99188-7719",
