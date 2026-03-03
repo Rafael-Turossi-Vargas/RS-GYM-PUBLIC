@@ -1,5 +1,5 @@
 import React from "react";
-import StickyTrialBar from "./StickyTrialBar";
+
 import { NavLink, useLocation } from "react-router-dom";
 import { Instagram, ArrowRight } from "lucide-react";
 import { BRAND, buildWhatsAppLink } from "../lib/brand";
@@ -168,7 +168,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
       {/* Footer + CTA fixo */}
       <Footer />
-      <StickyTrialBar />
+      
 
       {/* ✅ Mini assistente (SaaS) */}
       <MiniAssistant />
