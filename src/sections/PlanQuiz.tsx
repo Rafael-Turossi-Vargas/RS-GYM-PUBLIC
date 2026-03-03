@@ -167,7 +167,7 @@ Pode me explicar as condições e já agendar minha aula experimental? ✅`;
               step={Math.min(step, allSteps)}
               total={allSteps}
               title="Qual plano é ideal pra você?"
-              subtitle="Agora o teste considera urgência, tempo e forma de pagamento — pra recomendar qualquer plano com precisão."
+              subtitle=""
             />
 
             {/* progress mobile */}
@@ -542,7 +542,7 @@ Pode me explicar as condições e já agendar minha aula experimental? ✅`;
                               href={waQuiz}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gold-500/30 bg-gold-500 px-4 py-3 text-sm font-semibold text-black hover:brightness-110 transition"
+                              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gold-500/30 bg-gold-500 px-4 py-3 text-sm font-semibold text-white hover:brightness-110 transition"
                             >
                               Quero esse plano <ArrowRight className="h-4 w-4" />
                             </a>
@@ -568,13 +568,9 @@ Pode me explicar as condições e já agendar minha aula experimental? ✅`;
                     <div className="mt-1 text-sm text-white/70">
                       {rec.plan.price} • {rec.plan.cadence}
                     </div>
-                    <div className="mt-3 text-xs text-white/60">
-                      Confiança: <span className="text-white/80">{rec.confidence}</span>
-                    </div>
                   </div>
 
                   <div className="mt-4 text-xs text-white/50">
-                    * Agora o sistema usa urgência, tempo e pagamento — evitando recomendar sempre o mensal.
                   </div>
                 </div>
               </div>

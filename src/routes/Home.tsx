@@ -16,10 +16,7 @@ import { PLANS } from "../lib/plans";
 import Stats from "../sections/Stats";
 
 import PlanQuiz from "../sections/PlanQuiz";
-
-// ✅ NOVAS SECTIONS (SaaS premium)
 import Premium from "../sections/Premium";
-import Comparison from "../sections/Comparison";
 import PeakHours from "../sections/PeakHours";
 
 
@@ -169,8 +166,6 @@ export default function Home() {
 
       {/* ✅ Diferenciais premium (SaaS) */}
       <Premium />
-      <Comparison />
-
       {/* Conteúdo */}
       <Gallery />
       <Reviews />
