@@ -73,8 +73,8 @@ function CarouselArrows({
         onClick={() => scrollByCards("left")}
         className={[
           "pointer-events-auto",
-          "absolute left-2 top-1/2 -translate-y-1/2 z-40",
-          "grid h-10 w-10 place-items-center rounded-full",
+          "absolute left-0 top-1/2 -translate-y-1/2 z-40",
+          "grid h-8 w-8 place-items-center rounded-full",
           "border border-white/10 bg-black/55 backdrop-blur",
           "hover:bg-black/70 active:scale-95 transition",
         ].join(" ")}
@@ -89,8 +89,8 @@ function CarouselArrows({
         onClick={() => scrollByCards("right")}
         className={[
           "pointer-events-auto",
-          "absolute right-2 top-1/2 -translate-y-1/2 z-40",
-          "grid h-10 w-10 place-items-center rounded-full",
+          "absolute right-0 top-1/2 -translate-y-1/2 z-40",
+          "grid h-8 w-8 place-items-center rounded-full",
           "border border-white/10 bg-black/55 backdrop-blur",
           "hover:bg-black/70 active:scale-95 transition",
         ].join(" ")}

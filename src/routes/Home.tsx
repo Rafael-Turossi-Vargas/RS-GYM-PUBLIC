@@ -17,6 +17,13 @@ import Stats from "../sections/Stats";
 import Coaches from "../sections/Coaches";
 import PlanQuiz from "../sections/PlanQuiz";
 
+// ✅ NOVAS SECTIONS (SaaS premium)
+import Premium from "../sections/Premium";
+import HowItWorks from "../sections/HowItWorks";
+import Comparison from "../sections/Comparison";
+import PeakHours from "../sections/PeakHours";
+
+
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
   whileInView: { opacity: 1, y: 0 },
@@ -68,9 +75,7 @@ function CarouselArrows({
   };
 
   return (
-    <div
-      className={["absolute inset-y-0 left-0 right-0 z-30", "pointer-events-none", className].join(" ")}
-    >
+    <div className={["absolute inset-y-0 left-0 right-0 z-30", "pointer-events-none", className].join(" ")}>
       <div className="pointer-events-none absolute inset-y-0 left-0 bg-[linear-gradient(to_right,rgba(0,0,0,.70),transparent)]" />
       <div className="pointer-events-none absolute inset-y-0 right-0 bg-[linear-gradient(to_left,rgba(0,0,0,.70),transparent)]" />
 
@@ -113,7 +118,6 @@ export default function Home() {
   const wa = buildWhatsAppLink();
   const plansScrollerRef = React.useRef<HTMLDivElement | null>(null);
 
-  // ✅ totalmente tipado, sem "brandAny"
   const googleRating = typeof BRAND.googleRating === "number" ? BRAND.googleRating : 4.8;
   const googleReviews = typeof BRAND.googleReviewsCount === "number" ? BRAND.googleReviewsCount : 37;
 
@@ -164,9 +168,18 @@ export default function Home() {
       {/* Prova social (contadores) */}
       <Stats />
 
+      {/* ✅ Diferenciais premium (SaaS) */}
+      <Premium />
+      <HowItWorks />
+      <Comparison />
+
       {/* Conteúdo */}
       <Gallery />
       <Reviews />
+
+      {/* ✅ Agenda inteligente */}
+      <PeakHours />
+
       <Schedule />
 
       {/* Professores (confiança) */}
@@ -175,13 +188,13 @@ export default function Home() {
       {/* Quiz (conversão) */}
       <PlanQuiz />
 
+      {/* ✅ Instagram */}
+      
+
       {/* Preview Planos */}
       <section id="planos-preview" className="py-14 sm:py-20">
         <Container>
-          <motion.div
-            {...fadeUp}
-            className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
-          >
+          <motion.div {...fadeUp} className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h2 className="text-3xl font-semibold">
                 <span className="gold-text">Planos</span>
@@ -191,7 +204,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* ✅ SPA: sem reload */}
             <Link
               to="/planos"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
@@ -200,7 +212,7 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* ✅ MOBILE: carrossel com setas */}
+          {/* MOBILE: carrossel com setas */}
           <motion.div {...fadeUp} className="relative md:hidden">
             <CarouselArrows scrollerRef={plansScrollerRef} />
 
@@ -216,10 +228,7 @@ export default function Home() {
                 "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
                 "cursor-grab active:cursor-grabbing",
               ].join(" ")}
-              style={{
-                WebkitOverflowScrolling: "touch",
-                touchAction: "pan-x",
-              }}
+              style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
             >
               {PLANS.map((p) => (
                 <article
@@ -278,7 +287,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* ✅ DESKTOP/TABLET+: grid */}
+          {/* DESKTOP/TABLET+: grid */}
           <motion.div {...fadeUp} className="hidden md:block">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {PLANS.map((p) => (

@@ -1,32 +1,46 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RS GYM • Academia em Esteio</title>
+    <meta
+      name="description"
+      content="RS GYM — Academia em Esteio/RS. Estrutura premium, treino inteligente e foco em resultados."
+    />
 
-<title>RS GYM • Academia em Esteio</title>
+    <link rel="icon" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <meta name="theme-color" content="#000000" />
 
-<meta name="description"
-content="RS GYM — Academia em Esteio/RS. Estrutura premium, treino inteligente e foco em resultados." />
+    <!-- Open Graph -->
+    <meta property="og:title" content="RS GYM — Academia em Esteio" />
+    <meta property="og:description" content="Treine com estrutura premium e resultados reais." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/logo.png" />
 
-<!-- ✅ REMOVE O RT -->
-<link rel="icon" href="/logo.png" />
-<link rel="apple-touch-icon" href="/logo.png" />
+    <!-- SEO local (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HealthClub",
+        "name": "RS GYM",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Pres. Vargas, 760 — Centro",
+          "addressLocality": "Esteio",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        },
+        "telephone": "+55 51 99188-7719",
+        "sameAs": ["https://www.instagram.com/rsgym_esteio/"]
+      }
+    </script>
+  </head>
 
-<meta name="theme-color" content="#000000" />
-
-<!-- Open Graph -->
-<meta property="og:title" content="RS GYM — Academia em Esteio" />
-<meta property="og:description"
-content="Treine com estrutura premium e resultados reais." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="/og.jpg" />
-
-</head>
-
-<body>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

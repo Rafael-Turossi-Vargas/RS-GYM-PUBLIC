@@ -1,12 +1,25 @@
 import React from "react";
 import StickyTrialBar from "./StickyTrialBar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Instagram, ArrowRight } from "lucide-react";
 import { BRAND, buildWhatsAppLink } from "../lib/brand";
 import Footer from "./Footer";
+import ScrollProgress from "./ScrollProgress";
+import MiniAssistant from "./MiniAssistant";
+import { useScrollSpy } from "../hooks/useScrollSpy";
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const wa = buildWhatsAppLink();
+  const location = useLocation();
+
+  // ✅ ScrollSpy: só faz sentido na Home (quando tem as sections)
+  const isHome = location.pathname === "/";
+  const active = useScrollSpy(
+    isHome
+      ? ["inicio", "beneficios", "como-funciona", "comparativo", "galeria", "depoimentos", "pico", "planos-preview", "contato"]
+      : [],
+    140
+  );
 
   // ✅ Mostrar/ocultar ao scroll (some descendo, volta subindo)
   const [showFloat, setShowFloat] = React.useState(true);
@@ -68,6 +81,12 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
   const resetMagnet = () => setMagnet({ x: 0, y: 0 });
 
+  const navCls = (id: string) =>
+    [
+      "text-sm transition",
+      isHome && active === id ? "text-white" : "text-white/70 hover:text-white",
+    ].join(" ");
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Backgrounds globais */}
@@ -76,6 +95,11 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-black/60 backdrop-blur supports-[backdrop-filter]:bg-black/50">
+        {/* ✅ Progress bar SaaS */}
+        <div className="relative">
+          <ScrollProgress />
+        </div>
+
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a href="/#inicio" className="flex items-center gap-4 group">
             <img
@@ -83,7 +107,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
               alt="RS GYM"
               draggable={false}
               className={[
-                "h-15 sm:h-15 w-auto object-contain select-none",
+                "h-14 w-auto object-contain select-none",
                 "transition-transform duration-300",
                 "group-hover:scale-[1.03]",
                 "drop-shadow-[0_10px_24px_rgba(0,0,0,0.55)]",
@@ -99,19 +123,19 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">
-            <a className="text-sm text-white/70 hover:text-white transition" href="/#beneficios">
+            <a className={navCls("beneficios")} href="/#beneficios">
               Diferenciais
             </a>
-            <a className="text-sm text-white/70 hover:text-white transition" href="/#galeria">
+            <a className={navCls("galeria")} href="/#galeria">
               Galeria
             </a>
-            <a className="text-sm text-white/70 hover:text-white transition" href="/#depoimentos">
+            <a className={navCls("depoimentos")} href="/#depoimentos">
               Avaliações
             </a>
             <NavLink className="text-sm text-white/70 hover:text-white transition" to="/planos">
               Planos
             </NavLink>
-            <a className="text-sm text-white/70 hover:text-white transition" href="/#contato">
+            <a className={navCls("contato")} href="/#contato">
               Contato
             </a>
           </nav>
@@ -142,9 +166,12 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       {/* ✅ Conteúdo da página (apenas 1x!) */}
       <main>{children}</main>
 
-      {/* Footer + CTA fixo (1x!) */}
+      {/* Footer + CTA fixo */}
       <Footer />
       <StickyTrialBar />
+
+      {/* ✅ Mini assistente (SaaS) */}
+      <MiniAssistant />
 
       {/* WhatsApp flutuante */}
       <a
@@ -180,7 +207,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
             alt="WhatsApp"
             draggable={false}
             className={[
-              "h-14 w-14 sm:h-15 sm:w-15",
+              "h-14 w-14",
               "select-none",
               "drop-shadow-[0_10px_26px_rgba(0,0,0,0.55)]",
               "transition-all duration-300",
